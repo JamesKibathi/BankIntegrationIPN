@@ -33,8 +33,8 @@ to their database, updating student's payment record accordingly.
 
 2. **Add Db and other configuration**
    
- We will need to configure a SecretKey in the appsettings.json file. Add a random secret key (16 chars preferred)
- in the PaymentSettings section. THIS IS A MUST
+    We will need to configure a SecretKey in the appsettings.json file. Add a random secret key (16 chars preferred)
+    in the PaymentSettings section. THIS IS A MUST
 
 4. **Open the project with Visual Studio or Visual Code Studio**
 
@@ -51,14 +51,14 @@ to their database, updating student's payment record accordingly.
 8. **Making Requests**
    
    
-After all the services are up navigate to `localhost:5000/swagger/index.html`. 
-SwaggerUI is used for the gateway service documentation with request and response examples, here you can start interacting with the system.
+   After all the services are up navigate to `localhost:5000/swagger/index.html`. 
+   SwaggerUI is used for the gateway service documentation with request and response examples, here you can start interacting with the system.
 
-![API Documentation](endpoints_swagger.png)
-
-
-![Schema](schema_swagger.png)
-  
+   ![API Documentation](endpoints_swagger.png)
+   
+   
+   ![Schema](schema_swagger.png)
+     
 
 ## Assumptions
 <ul>
