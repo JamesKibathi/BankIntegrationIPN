@@ -4,7 +4,7 @@ using System.Text;
 
 namespace BankIntegrationIPN.Services
 {
-    public class PaymentService:IPaymentService
+    public class PaymentService : IPaymentService
     {
         public bool ValidateChecksum(string secretKey, PaymentDto paymentDto)
         {

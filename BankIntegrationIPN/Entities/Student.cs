@@ -13,6 +13,6 @@
 
         // Navigation property: a student can have many payments
         public ICollection<Payment>? Payments { get; set; }
-      
+
     }
 }

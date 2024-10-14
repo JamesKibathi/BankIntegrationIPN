@@ -22,6 +22,10 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
 // services
 builder.Services.AddScoped<IPaymentService, PaymentService>();
 
+// Register StudentService in DI container
+builder.Services.AddScoped<IStudentService, StudentService>();
+
+
 
 // Enable configuration for appsettings.json
 builder.Services.Configure<PaymentSettings>(builder.Configuration.GetSection("PaymentSettings"));

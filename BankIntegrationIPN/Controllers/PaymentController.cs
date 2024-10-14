@@ -1,20 +1,16 @@
-﻿using BankIntegrationIPN.Configurations;
-using Microsoft.Extensions.Options;
-using BankIntegrationIPN.Data;
+﻿using BankIntegrationIPN.Data;
 using BankIntegrationIPN.Dtos;
 using BankIntegrationIPN.Entities;
 using BankIntegrationIPN.Services;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Metadata;
 
 
 namespace BankIntegrationIPN.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class PaymentController: ControllerBase 
-    { 
+    public class PaymentController : ControllerBase
+    {
 
         private readonly IPaymentService _paymentService;
         private readonly string? _secretKey;
@@ -24,7 +20,7 @@ namespace BankIntegrationIPN.Controllers
         {
             _secretKey = configuration.GetSection("PaymentSettings:SecretKey").Value;
             _paymentService = paymentService;
-            _context = context; 
+            _context = context;
 
         }
 
