@@ -9,10 +9,10 @@ with the transaction details in the database.
 
 ## Design Overview 🧩
 
-- [Controller Layer](./Controllers/README.md) - Exposes API endpoints to receive IPN requests and process payments.
-- [Data Layer](./Data/README.md) -Manages the database context and handles all interactions with the SQL Server database using Entity Framework Core.
-- [Service Layer](./Services/README.md) -Contains the business logic, and the checksum validation.
-- [Configuration Layer](./appsettings.json/README.md) - Handles application settings and configurations (e.g., secret keys for checksum validation).
+- [Controller Layer](./BankIntegrationIPN/Controllers) - Exposes API endpoints to receive IPN requests and process payments.
+- [Data Layer](./BankIntegrationIPN/Data) -Manages the database context and handles all interactions with the SQL Server database using Entity Framework Core.
+- [Service Layer](./BankIntegrationIPN/Services) -Contains the business logic, and the checksum validation.
+- [Configuration Layer](./BankIntegrationIPN/Controllers) - Handles application settings and configurations (e.g., secret keys for checksum validation).
 
 
 ## Tools and Technologies 🛠️
