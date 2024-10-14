@@ -12,6 +12,6 @@
 
         // Foreign key to associate payment with a student
         public int StudentId { get; set; }
-        public required Student Student { get; set; }
+        public Student? Student { get; set; }
     }
 }
