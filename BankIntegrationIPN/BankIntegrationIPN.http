@@ -1,0 +1,6 @@
+@BankIntegrationIPN_HostAddress = http://localhost:5044
+
+GET {{BankIntegrationIPN_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
