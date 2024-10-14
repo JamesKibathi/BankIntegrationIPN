@@ -1,10 +1,10 @@
 # Instant Payment Notification (IPN) Service 🚀
 
 **BankIntegrationIPN** is a web-based service designed to integrate and process payment notifications from a payment service. 
-The service simulates payment integration between a school and a bank. The bank provides a payment gateway, processe payment
-and sends a response to the school via call-back API. The school, upon receiving the callback from the bank, it validates checksums
-to verify that this response has not been compromised. If response the is verified, the school updates that payment information
-with the transaction details in the database.
+The service simulates payment integration between a school and a bank. The bank provides a payment gateway, process payments
+and sends a response to the school via a call-back API. The school, upon receiving a callback from the bank, it validates checksums
+to verify that this response has not been compromised. If the response is verified, the school  stores that information
+to their database, updating student's payment record accordingly.
 
 
 ## Design Overview 🧩
@@ -32,22 +32,27 @@ with the transaction details in the database.
    ```
 
 2. **Add Db and other configuration**
+   
  We will need to configure a SecretKey in the appsettings.json file. Add a random secret key (16 chars preferred)
  in the PaymentSettings section. THIS IS A MUST
 
-3. **Open the project with Visual Studio or Visual Code Studio**
+4. **Open the project with Visual Studio or Visual Code Studio**
 
-4. **Search for package manager console to update db and run migrations**
+5. **Search for package manager console to update db and run migrations**
    ```
    # Run migrations
 
    Update-Database
    ```
 
-5. **Build and run the project to start**
+6. **Build and run the project to start**
+   
 
-6. **Making Requests**
-After all the services are up navigate to `localhost:5000/swagger/index.html`. SwaggerUI is used for the gateway service documentation with request and response examples, here you can start interacting with the system.
+8. **Making Requests**
+   
+   
+After all the services are up navigate to `localhost:5000/swagger/index.html`. 
+SwaggerUI is used for the gateway service documentation with request and response examples, here you can start interacting with the system.
 
 ![API Documentation](endpoints_swagger.png)
 
