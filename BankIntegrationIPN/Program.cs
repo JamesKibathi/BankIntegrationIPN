@@ -1,5 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using BankIntegrationIPN.Data;
+using BankIntegrationIPN.Services;
+using BankIntegrationIPN.Configurations;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -16,6 +18,13 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
 
 });
+
+// services
+builder.Services.AddScoped<IPaymentService, PaymentService>();
+
+
+// Enable configuration for appsettings.json
+builder.Services.Configure<PaymentSettings>(builder.Configuration.GetSection("PaymentSettings"));
 
 
 var app = builder.Build();

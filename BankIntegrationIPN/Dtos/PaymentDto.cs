@@ -9,5 +9,6 @@
         public required string ResultCode { get; set; }
         public required string ResponseMessage { get; set; }
         public required string ReceiptNumber { get; set; }
+        public required string Checksum { get; set; }
     }
 }
