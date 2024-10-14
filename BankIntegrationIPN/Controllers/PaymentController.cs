@@ -18,8 +18,8 @@ namespace BankIntegrationIPN.Controllers
             _context = context;
         }
 
-        // POST: api/payment/process
-        [HttpPost("process")]
+        // POST: api/payment/ipn
+        [HttpPost("ipn")]
         public async Task<IActionResult> ProcessPayment([FromBody] PaymentDto paymentDto)
         {
             // Validate checksum (optional)
