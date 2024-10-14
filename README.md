@@ -53,15 +53,19 @@ The project uses SQL Server to store payment transaction details. Below are the 
   A student can have multiple payments,and each payment must be associated with a student:
 
 ### System Architecture
-<li>Controller Layer: Exposes API endpoints to receive IPN requests and process payments.</li>
-<li>Service Layer: Contains the business logic, including checksum validation.</li>
-<li>Data Layer: Manages the database context and handles all interactions with the SQL Server database using Entity Framework Core.</li>
-<li>Configuration Layer: Handles application settings and configurations (e.g., secret keys for checksum validation).</li>
+<ol>
+    <li>Controller Layer: Exposes API endpoints to receive IPN requests and process payments.</li>
+    <li>Service Layer: Contains the business logic, including checksum validation.</li>
+    <li>Data Layer: Manages the database context and handles all interactions with the SQL Server database using Entity Framework Core.</li>
+    <li>Configuration Layer: Handles application settings and configurations (e.g., secret keys for checksum validation).</li>
+</ol>
 
 ### Core Components:
-<li>PaymentController: Receives HTTP requests and validates payment data.</li>
-<li>PaymentService: Contains logic for validating and generating checksums.</li>
-<li>PaymentSettings: Stores configuration settings such as secret keys for checksum generation.</li>
+<ol>
+    <li>PaymentController: Receives HTTP requests and validates payment data.</li>
+    <li>PaymentService: Contains logic for validating and generating checksums.</li>
+    <li>PaymentSettings: Stores configuration settings such as secret keys for checksum generation.</li>
+</ol>
 
 ### Assumptions
 <ul>
