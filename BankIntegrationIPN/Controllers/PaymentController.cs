@@ -11,52 +11,38 @@ namespace BankIntegrationIPN.Controllers
     [ApiController]
     public class PaymentController : ControllerBase
     {
-
         private readonly IPaymentService _paymentService;
         private readonly string? _secretKey;
-        private readonly ApplicationDbContext _context;
 
         public PaymentController(IConfiguration configuration, IPaymentService paymentService)
         {
             _secretKey = configuration.GetSection("PaymentSettings:SecretKey").Value;
             _paymentService = paymentService;
-            _context = context;
-
         }
-
 
         // POST: api/payment/ipn
         [HttpPost("ipn")]
         public async Task<IActionResult> ProcessPayment([FromBody] PaymentDto paymentDto)
         {
-
             if (string.IsNullOrEmpty(_secretKey))
             {
                 return BadRequest("Secret key is missing.");
             }
+
             // Validate the checksum using the service
             if (!_paymentService.ValidateChecksum(_secretKey, paymentDto))
             {
                 return BadRequest("Invalid checksum.");
             }
 
-            // Proceed with payment processing
-            var payment = new Payment
+            // Use the PaymentService to process the payment
+            var result = await _paymentService.ProcessPaymentAsync(paymentDto);
+            if (!result)
             {
-                TranId = paymentDto.TranId,
-                StudentId = paymentDto.StudentId,
-                Amount = paymentDto.Amount,
-                DatePaid = paymentDto.DatePaid,
-                ResultCode = paymentDto.ResultCode,
-                ResponseMessage = paymentDto.ResponseMessage,
-                ReceiptNumber = paymentDto.ReceiptNumber
-            };
+                return BadRequest("Payment processing failed.");
+            }
 
-            await _context.Payments.AddAsync(payment);
-            await _context.SaveChangesAsync();
-
-            return Ok("Payment processed successfully");
-
+            return Ok("Payment accepted successfully");
         }
 
     }
