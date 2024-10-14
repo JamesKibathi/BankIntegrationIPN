@@ -7,9 +7,7 @@ namespace BankIntegrationIPN.Data
 {
     public class ApplicationDbContext:DbContext
     {
-
-        public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options) { }
-
+        public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options){ }
         public DbSet<Student> Students { get; set; }
         public DbSet<Payment> Payments { get; set; }
 
@@ -24,10 +22,11 @@ namespace BankIntegrationIPN.Data
             // Configuring one-to-many relationship between Student and Payment
             modelBuilder.Entity<Payment>()
                 .HasOne(p => p.Student)
-                .WithMany(s => s.Payments)
-                .HasForeignKey(p => p.StudentId);
+                .WithMany()
+                .HasForeignKey(p => p.StudentId)
+                .OnDelete(DeleteBehavior.Cascade);
 
-            base.OnModelCreating(modelBuilder);
+
         }
     }
 }

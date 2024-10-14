@@ -45,5 +45,17 @@ namespace BankIntegrationIPN.Controllers
             return Ok("Payment accepted successfully");
         }
 
+        // GET: api/payment/students/{studentId}
+        [HttpGet("students/{studentId}")]
+        public async Task<IActionResult> GetPaymentsByStudentId(int studentId)
+        {
+            var payments = await _paymentService.GetPaymentsByStudentIdAsync(studentId);
+            if (payments == null || !payments.Any())
+            {
+                return NotFound($"No payments found for student with ID = {studentId}.");
+            }
+
+            return Ok(payments);
+        }
     }
 }

@@ -11,8 +11,5 @@
         public string? Email { get; set; } = string.Empty;
         public string Phone { get; set; } = string.Empty;
 
-        // Navigation property: a student can have many payments
-        public ICollection<Payment>? Payments { get; set; }
-
     }
 }

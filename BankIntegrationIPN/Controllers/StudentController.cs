@@ -37,7 +37,6 @@ namespace BankIntegrationIPN.Controllers
             return Ok(student);
         }
 
-
         // POST: api/student
         [HttpPost]
         public async Task<ActionResult<Student>> CreateStudent([FromBody] Student student)
@@ -45,6 +44,14 @@ namespace BankIntegrationIPN.Controllers
             if (student == null)
             {
                 return BadRequest("Student data is null.");
+            }
+
+            // Validate required fields
+            if (string.IsNullOrWhiteSpace(student.RegNo) ||
+                string.IsNullOrWhiteSpace(student.FirstName) ||
+                string.IsNullOrWhiteSpace(student.LastName))
+            {
+                return BadRequest("RegNo, FirstName, and LastName are required.");
             }
 
             var createdStudent = await _studentService.CreateStudentAsync(student);
@@ -55,6 +62,11 @@ namespace BankIntegrationIPN.Controllers
         [HttpPut("{id}")]
         public async Task<IActionResult> UpdateStudent(int id, [FromBody] Student updatedStudent)
         {
+            if (updatedStudent == null)
+            {
+                return BadRequest("Updated student data is null.");
+            }
+
             if (id != updatedStudent.Id)
             {
                 return BadRequest("Student ID mismatch.");
@@ -66,10 +78,17 @@ namespace BankIntegrationIPN.Controllers
                 return NotFound($"Student with Id = {id} not found.");
             }
 
-            await _studentService.UpdateStudentAsync(id, updatedStudent);
+            // Update the student properties
+            student.RegNo = updatedStudent.RegNo;
+            student.FirstName = updatedStudent.FirstName;
+            student.LastName = updatedStudent.LastName;
+            student.Surname = updatedStudent.Surname; // Nullable
+            student.Email = updatedStudent.Email; // Nullable
+            student.Phone = updatedStudent.Phone;
+
+            await _studentService.UpdateStudentAsync(id, student);
             return NoContent(); // Successfully updated
         }
-
 
         // DELETE: api/student/{id}
         [HttpDelete("{id}")]
@@ -84,6 +103,5 @@ namespace BankIntegrationIPN.Controllers
             await _studentService.DeleteStudentAsync(id);
             return NoContent(); // Successfully deleted
         }
-
     }
 }

@@ -1,4 +1,7 @@
-﻿namespace BankIntegrationIPN.Entities
+﻿using System.ComponentModel.DataAnnotations.Schema;
+
+
+namespace BankIntegrationIPN.Entities
 {
     public class Payment
     {
@@ -12,6 +15,8 @@
 
         // Foreign key to associate payment with a student
         public int StudentId { get; set; }
+
+        [ForeignKey("StudentId")]
         public Student? Student { get; set; }
     }
 }
