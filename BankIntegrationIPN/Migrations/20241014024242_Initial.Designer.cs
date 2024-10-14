@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BankIntegrationIPN.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20241014022716_Initial")]
+    [Migration("20241014024242_Initial")]
     partial class Initial
     {
         /// <inheritdoc />
@@ -34,6 +34,7 @@ namespace BankIntegrationIPN.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<decimal>("Amount")
+                        .HasPrecision(18, 2)
                         .HasColumnType("decimal(18,2)");
 
                     b.Property<DateTime>("DatePaid")
@@ -85,6 +86,10 @@ namespace BankIntegrationIPN.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Phone")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("RegNo")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 

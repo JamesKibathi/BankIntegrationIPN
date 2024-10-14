@@ -17,6 +17,7 @@ namespace BankIntegrationIPN.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
+                    RegNo = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     FirstName = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     LastName = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Surname = table.Column<string>(type: "nvarchar(max)", nullable: false),
@@ -35,7 +36,7 @@ namespace BankIntegrationIPN.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     TranId = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Amount = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    Amount = table.Column<decimal>(type: "decimal(18,2)", precision: 18, scale: 2, nullable: false),
                     DatePaid = table.Column<DateTime>(type: "datetime2", nullable: false),
                     ResultCode = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     ResponseMessage = table.Column<string>(type: "nvarchar(max)", nullable: false),

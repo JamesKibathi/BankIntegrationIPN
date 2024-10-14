@@ -31,6 +31,7 @@ namespace BankIntegrationIPN.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<decimal>("Amount")
+                        .HasPrecision(18, 2)
                         .HasColumnType("decimal(18,2)");
 
                     b.Property<DateTime>("DatePaid")
@@ -82,6 +83,10 @@ namespace BankIntegrationIPN.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Phone")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("RegNo")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 

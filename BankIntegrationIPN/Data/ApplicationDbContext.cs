@@ -15,6 +15,12 @@ namespace BankIntegrationIPN.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+
+            // Specify precision and scale for Amount using HasPrecision
+            modelBuilder.Entity<Payment>()
+                .Property(p => p.Amount)
+                .HasPrecision(18, 2); // Precision 18, scale 2
+
             // Configuring one-to-many relationship between Student and Payment
             modelBuilder.Entity<Payment>()
                 .HasOne(p => p.Student)
