@@ -52,7 +52,7 @@ to their database, updating student's payment record accordingly.
    
    
    After all the services are up navigate to `localhost:5000/swagger/index.html`. 
-   SwaggerUI is used for the gateway service documentation with request and response examples, here you can start interacting with the system.
+   SwaggerUI is used in this web service documentation with request and response examples, here you can start interacting with the system.
 
    ![API Documentation](endpoints_swagger.png)
    
